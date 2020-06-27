@@ -5,12 +5,10 @@ using UnityEngine.UIElements;
 
 public class InputController : MonoBehaviour
 {
+    public float speed = 11;
     [SerializeField] private Game game;
     [SerializeField] private Vector3 circleCenter;
     [SerializeField] private float circleRadius;
-    [SerializeField] private float coordPerFrameWalking;
-    [SerializeField] private float coordPerScrollRadius;
-    [SerializeField] private float coordPerFrameToCursorWalking;
     private Vector3 lastHitPoint;
     
     void Update()
@@ -31,28 +29,28 @@ public class InputController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            circleCenter += Vector3.up * coordPerFrameWalking;
+            circleCenter += Vector3.up * speed;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            circleCenter += Vector3.left * coordPerFrameWalking;
+            circleCenter += Vector3.left * speed;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            circleCenter += Vector3.down * coordPerFrameWalking;
+            circleCenter += Vector3.down * speed;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            circleCenter += Vector3.right * coordPerFrameWalking;
+            circleCenter += Vector3.right * speed;
         }
 
-        circleRadius += coordPerScrollRadius * Input.mouseScrollDelta.y;
+        circleRadius += speed * Input.mouseScrollDelta.y;
 
         Vector3 newFarPlayerPosition = game.farPlayer.transform.position;
-        newFarPlayerPosition += (newFarPlayerPosition - lastHitPoint).normalized * coordPerFrameToCursorWalking;
+        newFarPlayerPosition += (newFarPlayerPosition - lastHitPoint).normalized * speed;
         newFarPlayerPosition += (newFarPlayerPosition - circleCenter).normalized *
                                 (Vector3.Distance(newFarPlayerPosition, circleCenter) - circleRadius);
         game.farPlayer.transform.position = newFarPlayerPosition;

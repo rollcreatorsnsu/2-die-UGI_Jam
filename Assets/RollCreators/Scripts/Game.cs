@@ -5,17 +5,37 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     public bool isPaused = false;
-    public int points = 0;
+    private int _points;
+
+    public int points
+    {
+        get => _points;
+        set
+        {
+            int diff = value - _points;
+            if (doubleUpCount > 0)
+            {
+                diff *= 2;
+            }
+
+            _points += diff;
+        }
+    }
+
     public float health = 100;
     public FarPlayer farPlayer;
     public NearPlayer nearPlayer;
     [SerializeField] private List<GameObject> enemies;
+    [SerializeField] private InputController inputController;
+    [SerializeField] private GameObject bigExplosion;
+    [SerializeField] private GameObject freezing;
+    private int doubleUpCount = 0;
     private static int HORIZONTAL_MODEL_SIZE = 138;
-    private static int VERTICAL_MODEL_SIZE = 77; 
+    private static int VERTICAL_MODEL_SIZE = 77;
 
     void Start()
     {
-        points = 0;
+        _points = 0;
         health = 100;
         farPlayer.currentWeapon = new Weapon
         {
@@ -66,7 +86,7 @@ public class Game : MonoBehaviour
         }
     }
 
-    public void ApplyImprovement(Improvement improvement)
+    public void ApplyImprovement(Improvement improvement, Vector3 position)
     {
         if (improvement as FarWeaponItem)
         {
@@ -78,5 +98,44 @@ public class Game : MonoBehaviour
             NearWeaponItem item = (NearWeaponItem) improvement;
             nearPlayer.currentWeapon = item.weapon;
         }
+        else if (improvement as SpeedUp)
+        {
+            inputController.speed += 4;
+            StartCoroutine(CancelSpeedUp());
+        }
+        else if (improvement as HealUp)
+        {
+            health += 30;
+            if (health > 100)
+            {
+                health = 100;
+            }
+        }
+        else if (improvement as DoubleUp)
+        {
+            doubleUpCount++;
+            StartCoroutine(CancelDoubleUp());
+        }
+        else if (improvement as BlowUp)
+        {
+            Instantiate(bigExplosion, position, Quaternion.identity);
+        }
+        else if (improvement as FreezeUp)
+        {
+            Instantiate(freezing, position, Quaternion.identity);
+        }
     }
+
+    private IEnumerator CancelSpeedUp()
+    {
+        yield return new WaitForSeconds(15);
+        inputController.speed -= 4;
+    }
+
+    private IEnumerator CancelDoubleUp()
+    {
+        yield return new WaitForSeconds(30);
+        doubleUpCount--;
+    }
+
 }

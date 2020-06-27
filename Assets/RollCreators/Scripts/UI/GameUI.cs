@@ -5,12 +5,6 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    private static Dictionary<string, Sprite> spritesOfWeapons;
-    
-    static GameUI() {
-        // TODO: filling sprites of weapons
-    }
-    
     [SerializeField] private Game game;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text healthText;
@@ -44,11 +38,11 @@ public class GameUI : MonoBehaviour
         bonusAnimator.Play("ShowBonus");
         if (improvement as FarWeaponItem)
         {
-            farWeaponImage.sprite = spritesOfWeapons[improvement.name];
+            farWeaponImage.sprite = improvement.sprite;
         }
         else if (improvement as NearWeaponItem)
         {
-            nearWeaponImage.sprite = spritesOfWeapons[improvement.name];
+            nearWeaponImage.sprite = improvement.sprite;
         }
     }
 }

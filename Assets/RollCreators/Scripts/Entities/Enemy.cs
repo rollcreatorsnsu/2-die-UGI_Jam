@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 {
     public Game game;
     public ImprovementFactory improvementFactory;
+    public bool isFrozen;
     [SerializeField] private float health;
     [SerializeField] private int points;
     [SerializeField] private float speed;
@@ -46,7 +47,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (isDead || game.isPaused) return;
+        if (isDead || game.isPaused || isFrozen) return;
         Vector3 nearestPlayerCoord = transform.position;
         float nearestDistance = Single.MaxValue;
         foreach (GameObject player in players)
@@ -87,7 +88,7 @@ public class Enemy : MonoBehaviour
             isDead = true;
             game.points += points;
             animator.Play("Die");
-            if (Random.value > 0.5) // TODO: balance
+            if (Random.value > 0.1)
             {
                 improvementFactory.CreateImprovement(transform.position);
             }
@@ -97,7 +98,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        if (other.gameObject.CompareTag("Player") && !isDead && !game.isPaused)
+        if (other.gameObject.CompareTag("Player") && !isDead && !game.isPaused && !isFrozen)
         {
             game.Hit(attackPerFrame);
         }
