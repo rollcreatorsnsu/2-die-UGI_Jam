@@ -7,12 +7,14 @@ public class FarPlayer : MonoBehaviour
     public Weapon currentWeapon;
     [SerializeField] private GameObject emptyBullet;
     [SerializeField] private Game game;
+    [SerializeField] private GameUI ui;
     private Animator animator;
     private float fireRate = 0;
     
     void Start()
     {
         animator = GetComponent<Animator>();
+        ResetAnimation();
     }
 
     void Update()
@@ -26,7 +28,7 @@ public class FarPlayer : MonoBehaviour
     public void Attack(Vector3 position)
     {
         if (fireRate > 0) return;
-        animator.Play(currentWeapon.name);
+        animator.Play($"Shot_{currentWeapon.name}");
         GameObject bulletObject = Instantiate(emptyBullet);
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         bullet.game = game;
@@ -37,6 +39,16 @@ public class FarPlayer : MonoBehaviour
 
     public void Die()
     {
-        animator.Play("Die");
+        animator.Play($"Die_{currentWeapon.name}");
+    }
+
+    public void ResetAnimation()
+    {
+        animator.Play($"Idle_{currentWeapon.name}");
+    }
+
+    public void GameOver()
+    {
+        ui.ShowGameOver();
     }
 }

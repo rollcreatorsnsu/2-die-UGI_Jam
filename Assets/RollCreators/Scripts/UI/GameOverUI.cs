@@ -10,7 +10,8 @@ public class GameOverUI : MonoBehaviour
     {
         if (!gameObject.activeSelf)
         {
-            animator.Play("FadeOut");
+            gameObject.SetActive(true);
+            animator.Play("GameOver");
         }
     }
 }

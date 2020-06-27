@@ -8,10 +8,12 @@ public class NearPlayer : MonoBehaviour
     private Animator animator;
     private float fireRate = 0;
     [SerializeField] private Game game;
+    [SerializeField] private GameUI ui;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        ResetAnimation();
     }
     
     void Update()
@@ -26,13 +28,23 @@ public class NearPlayer : MonoBehaviour
     public void Attack()
     {
         if (fireRate > 0) return;
-        animator.Play(currentWeapon.name);
+        animator.Play($"Shot_{currentWeapon.name}");
         fireRate = currentWeapon.rateOfFire;
     }
 
     public void Die()
     {
-        animator.Play("Die");
+        animator.Play($"Die_{currentWeapon.name}");
+    }
+
+    public void ResetAnimation()
+    {
+        animator.Play($"Idle_{currentWeapon.name}");
+    }
+    
+    public void GameOver()
+    {
+        ui.ShowGameOver();
     }
 
 }
