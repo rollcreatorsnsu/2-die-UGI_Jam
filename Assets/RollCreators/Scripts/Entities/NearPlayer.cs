@@ -7,6 +7,7 @@ public class NearPlayer : MonoBehaviour
     public Weapon currentWeapon;
     private Animator animator;
     private float fireRate = 0;
+    [SerializeField] private Game game;
 
     void Start()
     {
@@ -15,6 +16,7 @@ public class NearPlayer : MonoBehaviour
     
     void Update()
     {
+        if (game.isPaused) return;
         if (fireRate > 0)
         {
             fireRate -= Time.deltaTime;

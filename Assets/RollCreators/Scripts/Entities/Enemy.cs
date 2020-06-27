@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
+        if (isDead || game.isPaused) return;
         Vector3 nearestPlayerCoord = transform.position;
         float nearestDistance = Single.MaxValue;
         foreach (GameObject player in players)
@@ -74,6 +74,7 @@ public class Enemy : MonoBehaviour
         while (!isDead)
         {
             yield return new WaitForSeconds(rate);
+            if (game.isPaused) continue;
             health -= health * percentDamage;
             CheckDead();
         }
@@ -96,7 +97,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        if (other.gameObject.CompareTag("Player") && !isDead)
+        if (other.gameObject.CompareTag("Player") && !isDead && !game.isPaused)
         {
             game.Hit(attackPerFrame);
         }

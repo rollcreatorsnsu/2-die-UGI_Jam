@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     
     void Update()
     {
+        if (!game.isPaused) return;
         float xPos = Input.mousePosition.x;
         float yPos = Input.mousePosition.y;
         if (xPos < panDetect)

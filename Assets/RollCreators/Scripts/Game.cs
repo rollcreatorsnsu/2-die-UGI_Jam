@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+    public bool isPaused = false;
     public int points = 0;
     public float health = 100;
     public FarPlayer farPlayer;
@@ -45,16 +46,12 @@ public class Game : MonoBehaviour
         return VERTICAL_MODEL_SIZE / 2;
     }
 
-    public void GameOver()
-    {
-        //TODO: UI logic
-    }
-
     private IEnumerator SpawnEnemy()
     {
         while (true)
         {
             yield return new WaitForSeconds(5); // TODO: Balance
+            if (isPaused) continue;
             Instantiate(enemies[Random.Range(0, enemies.Count)]);
         }
     }

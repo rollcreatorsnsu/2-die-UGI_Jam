@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
+        if (game.isPaused) return;
         transform.position += direction * weapon.speed;
         if (Vector3.Distance(Vector3.zero, transform.position) > game.GetVerticalSize() * game.GetHorizontalSize())
         {
