@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class Freezing : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        Destroy(this, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision other)
     {
-        
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            enemy.isFrozen = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            enemy.isFrozen = false;
+        }
     }
 }

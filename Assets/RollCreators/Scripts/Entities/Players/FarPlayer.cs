@@ -36,6 +36,6 @@ public class FarPlayer : MonoBehaviour
 
     public void Die()
     {
-        
+        animator.Play("Die");
     }
 }
