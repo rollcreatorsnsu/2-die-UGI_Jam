@@ -100,6 +100,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !isDead && !game.isPaused && !isFrozen)
         {
+            animator.Play("Attack");
             game.Hit(attackPerFrame);
         }
     }
