@@ -9,8 +9,8 @@ public class Improvement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Player player = gameObject.GetComponent<Player>();
-            player.ApplyImprovement(this);
+            Game game = GameObject.Find("Game").GetComponent<Game>();
+            game.ApplyImprovement(this);
             DestroyImmediate(this);
         }
     }

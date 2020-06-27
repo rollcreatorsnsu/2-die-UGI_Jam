@@ -27,20 +27,19 @@ public class Enemy : MonoBehaviour
 
     private void SetRandomStartPosition()
     {
-        float randomCoord = Random.Range(-Game.EDGE_OF_MAP, Game.EDGE_OF_MAP);
         switch (Random.Range(0, 4))
         {
             case 0:
-                transform.position = new Vector3(randomCoord, Game.EDGE_OF_MAP);
+                transform.position = new Vector3(Random.Range(-game.GetHorizontalSize(), game.GetHorizontalSize()), game.GetVerticalSize());
                 break;
             case 1:
-                transform.position = new Vector3(-Game.EDGE_OF_MAP, randomCoord);
+                transform.position = new Vector3(-game.GetHorizontalSize(), Random.Range(-game.GetVerticalSize(), game.GetVerticalSize()));
                 break;
             case 2:
-                transform.position = new Vector3(randomCoord, -Game.EDGE_OF_MAP);
+                transform.position = new Vector3(Random.Range(-game.GetHorizontalSize(), game.GetHorizontalSize()), -game.GetVerticalSize());
                 break;
             case 3:
-                transform.position = new Vector3(Game.EDGE_OF_MAP, randomCoord);
+                transform.position = new Vector3(game.GetHorizontalSize(), Random.Range(-game.GetVerticalSize(), game.GetVerticalSize()));
                 break;
         }
     }
@@ -67,6 +66,21 @@ public class Enemy : MonoBehaviour
     public void Hit(float damage)
     {
         health -= damage;
+        CheckDead();
+    }
+
+    public IEnumerator Fire(float rate, float percentDamage)
+    {
+        while (!isDead)
+        {
+            yield return new WaitForSeconds(rate);
+            health -= health * percentDamage;
+            CheckDead();
+        }
+    }
+
+    private void CheckDead()
+    {
         if (health < 0)
         {
             isDead = true;
@@ -84,8 +98,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !isDead)
         {
-            Player player = other.gameObject.GetComponent<Player>();
-            player.Hit(attackPerFrame);
+            game.Hit(attackPerFrame);
         }
     }
 }

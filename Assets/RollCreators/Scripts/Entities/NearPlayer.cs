@@ -28,4 +28,9 @@ public class NearPlayer : MonoBehaviour
         fireRate = currentWeapon.rateOfFire;
     }
 
+    public void Die()
+    {
+        animator.Play("Die");
+    }
+
 }

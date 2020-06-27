@@ -6,8 +6,6 @@ using UnityEngine.UIElements;
 public class InputController : MonoBehaviour
 {
     [SerializeField] private Game game;
-    [SerializeField] private FarPlayer farPlayer;
-    [SerializeField] private NearPlayer nearPlayer;
     [SerializeField] private Vector3 circleCenter;
     [SerializeField] private float circleRadius;
     [SerializeField] private float coordPerFrameWalking;
@@ -27,8 +25,8 @@ public class InputController : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            farPlayer.Attack(lastHitPoint);
-            nearPlayer.Attack();
+            game.farPlayer.Attack(lastHitPoint);
+            game.nearPlayer.Attack();
         }
 
         if (Input.GetKey(KeyCode.W))
@@ -53,14 +51,14 @@ public class InputController : MonoBehaviour
 
         circleRadius += coordPerScrollRadius * Input.mouseScrollDelta.y;
 
-        Vector3 newFarPlayerPosition = farPlayer.transform.position;
+        Vector3 newFarPlayerPosition = game.farPlayer.transform.position;
         newFarPlayerPosition += (newFarPlayerPosition - lastHitPoint).normalized * coordPerFrameToCursorWalking;
         newFarPlayerPosition += (newFarPlayerPosition - circleCenter).normalized *
                                 (Vector3.Distance(newFarPlayerPosition, circleCenter) - circleRadius);
-        farPlayer.transform.position = newFarPlayerPosition;
-        nearPlayer.transform.position = newFarPlayerPosition + (newFarPlayerPosition - circleCenter) * 2;
+        game.farPlayer.transform.position = newFarPlayerPosition;
+        game.nearPlayer.transform.position = newFarPlayerPosition + (newFarPlayerPosition - circleCenter) * 2;
 
-        farPlayer.transform.LookAt(lastHitPoint);
-        nearPlayer.transform.LookAt(lastHitPoint);
+        game.farPlayer.transform.LookAt(lastHitPoint);
+        game.nearPlayer.transform.LookAt(lastHitPoint);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] private Game game;
     [SerializeField] private float panSpeed = 3;
     [SerializeField] private float panDetect = 15;
     
@@ -14,33 +15,33 @@ public class CameraController : MonoBehaviour
         if (xPos < panDetect)
         {
             transform.position += new Vector3(-panSpeed, 0);
-            if (transform.position.x < -Game.EDGE_OF_MAP)
+            if (transform.position.x < -game.GetHorizontalSize())
             {
-                transform.position = new Vector3(-Game.EDGE_OF_MAP, transform.position.y);
+                transform.position = new Vector3(-game.GetHorizontalSize(), transform.position.y);
             }
         }
         if (xPos > Screen.width - panDetect)
         {
             transform.position += new Vector3(panSpeed, 0);
-            if (transform.position.x > Game.EDGE_OF_MAP)
+            if (transform.position.x > game.GetHorizontalSize())
             {
-                transform.position = new Vector3(Game.EDGE_OF_MAP, transform.position.y);
+                transform.position = new Vector3(game.GetHorizontalSize(), transform.position.y);
             }
         }
         if (yPos < panDetect)
         {
             transform.position += new Vector3(0, -panSpeed);
-            if (transform.position.y < -Game.EDGE_OF_MAP)
+            if (transform.position.y < -game.GetVerticalSize())
             {
-                transform.position = new Vector3(transform.position.x, -Game.EDGE_OF_MAP);
+                transform.position = new Vector3(transform.position.x, -game.GetVerticalSize());
             }
         }
         if (yPos > Screen.height - panDetect)
         {
             transform.position += new Vector3(0, panSpeed);
-            if (transform.position.y > Game.EDGE_OF_MAP)
+            if (transform.position.y > game.GetVerticalSize())
             {
-                transform.position = new Vector3(transform.position.x, Game.EDGE_OF_MAP);
+                transform.position = new Vector3(transform.position.x, game.GetVerticalSize());
             }
         }
     }

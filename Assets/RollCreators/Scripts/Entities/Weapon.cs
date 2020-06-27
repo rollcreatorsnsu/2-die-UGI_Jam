@@ -11,4 +11,8 @@ public struct Weapon
     public float rateOfFire;
     public float spread;
     public float speed;
+    public bool isExplodable;
+    public float fireDamagePercent;
+    public float fireDamageRate;
+    public float bounceDistance;
 }
