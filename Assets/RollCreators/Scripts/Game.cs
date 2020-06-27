@@ -6,7 +6,7 @@ public class Game : MonoBehaviour
 {
     public static int EDGE_OF_MAP = 1000;
     public int points = 0;
-    public float health = 100; // TODO: balance
+    public float health = 100;
 
     void Start()
     {

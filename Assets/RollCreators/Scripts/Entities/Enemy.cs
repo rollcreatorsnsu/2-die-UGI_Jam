@@ -72,18 +72,12 @@ public class Enemy : MonoBehaviour
             isDead = true;
             game.points += points;
             animator.Play("Die");
-            StartCoroutine(Die());
+            if (Random.value > 0.5) // TODO: balance
+            {
+                improvementFactory.CreateImprovement(transform.position);
+            }
+            Destroy(this, animator.GetCurrentAnimatorStateInfo(0).length);
         }
-    }
-
-    private IEnumerator Die()
-    {
-        yield return new WaitForSeconds(10); // TODO: destroy after animation ending
-        if (Random.value > 0.5) // TODO: balance
-        {
-            improvementFactory.CreateImprovement(transform.position);
-        }
-        DestroyImmediate(this);
     }
 
     private void OnCollisionStay(Collision other)
