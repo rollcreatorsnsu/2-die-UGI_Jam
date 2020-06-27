@@ -92,11 +92,13 @@ public class Game : MonoBehaviour
         {
             FarWeaponItem item = (FarWeaponItem) improvement;
             farPlayer.currentWeapon = item.weapon;
+            farPlayer.ResetAnimation();
         }
         else if (improvement as NearWeaponItem)
         {
             NearWeaponItem item = (NearWeaponItem) improvement;
             nearPlayer.currentWeapon = item.weapon;
+            nearPlayer.ResetAnimation();
         }
         else if (improvement as SpeedUp)
         {

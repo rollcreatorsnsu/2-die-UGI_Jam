@@ -18,16 +18,11 @@ public class GameUI : MonoBehaviour
 
     void Update()
     {
-        if (game.health < 0)
-        {
-            gameOverPanel.Show();
-        }
-
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             pausePanel.Show();
         }
-        scoreText.text = $"{game.points}";
+        scoreText.text = $"Score {game.points}";
         healthText.text = $"{Mathf.Floor(game.health)}/100";
         healtSlider.value = Mathf.Floor(game.health);
     }
@@ -35,7 +30,7 @@ public class GameUI : MonoBehaviour
     public void ShowBonus(Improvement improvement)
     {
         bonusText.text = improvement.name;
-        bonusAnimator.Play("ShowBonus");
+        bonusAnimator.Play("BonusFade");
         if (improvement as FarWeaponItem)
         {
             farWeaponImage.sprite = improvement.sprite;
@@ -44,5 +39,10 @@ public class GameUI : MonoBehaviour
         {
             nearWeaponImage.sprite = improvement.sprite;
         }
+    }
+
+    public void ShowGameOver()
+    {
+        gameOverPanel.Show();
     }
 }

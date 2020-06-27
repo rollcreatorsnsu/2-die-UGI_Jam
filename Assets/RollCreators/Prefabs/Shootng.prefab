@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7432376849611020187}
   - component: {fileID: 7432376849611020188}
   - component: {fileID: 7432376849611020189}
+  - component: {fileID: -8130315197442996306}
   m_Layer: 0
   m_Name: Shootng
   m_TagString: Untagged
@@ -4755,3 +4756,28 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-8130315197442996306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7432376849611020190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332e7be08291e07419f48801972c2040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game: {fileID: 0}
+  weapon:
+    name: 
+    damage: 0
+    rateOfFire: 0
+    spread: 0
+    speed: 0
+    isExplodable: 0
+    fireDamagePercent: 0
+    fireDamageRate: 0
+    bounceDistance: 0
+  direction: {x: 0, y: 0, z: 0}
+  explosionPrefab: {fileID: 0}
