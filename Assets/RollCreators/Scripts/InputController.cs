@@ -47,20 +47,15 @@ public class InputController : MonoBehaviour
         circleRadius += speed * Input.mouseScrollDelta.y * Time.deltaTime * 10;
 
         Vector3 newFarPlayerPosition = game.farPlayer.transform.position;
-        if (Vector3.Distance(lastHitPoint, newFarPlayerPosition) > 7)
-        {
-            newFarPlayerPosition += (lastHitPoint - newFarPlayerPosition).normalized * speed;
-        }
+        newFarPlayerPosition += (lastHitPoint - newFarPlayerPosition).normalized * speed * Time.deltaTime;
 
         float diff = Vector3.Distance(newFarPlayerPosition, circleCenter) - circleRadius;
-        bool needFlip = diff < 0;
         newFarPlayerPosition += (circleCenter - newFarPlayerPosition).normalized * diff;
         game.farPlayer.transform.position = newFarPlayerPosition;
         game.nearPlayer.transform.position = newFarPlayerPosition + (circleCenter - newFarPlayerPosition) * 2;
 
         float signedAngle = Vector2.SignedAngle(Vector2.up, lastHitPoint - game.farPlayer.transform.position);
-        game.farPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle + (needFlip ? 180 : 0));
-        signedAngle = Vector2.SignedAngle(Vector2.up, lastHitPoint - game.nearPlayer.transform.position);
-        game.nearPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle + 180 + (needFlip ? 180 : 0));
+        game.farPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle);
+        game.nearPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle + 180);
     }
 }
