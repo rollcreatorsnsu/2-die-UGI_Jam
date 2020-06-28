@@ -34,6 +34,7 @@ public class Game : MonoBehaviour
     private static int HORIZONTAL_MODEL_SIZE = 138;
     private static int VERTICAL_MODEL_SIZE = 77;
     private float lastHit = 0;
+    private int enemyCapacity = 1;
 
     void Start()
     {
@@ -72,12 +73,16 @@ public class Game : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5); // TODO: Balance
+            yield return new WaitForSeconds(5);
             if (isPaused) continue;
-            GameObject e = Instantiate(enemies[Random.Range(0, enemies.Count)]);
-            Enemy enemy = e.GetComponent<Enemy>();
-            enemy.game = this;
-            enemy.improvementFactory = factory;
+            for (var i = 0; i < enemyCapacity; i++)
+            {
+                GameObject e = Instantiate(enemies[Random.Range(0, enemies.Count)]);
+                Enemy enemy = e.GetComponent<Enemy>();
+                enemy.game = this;
+                enemy.improvementFactory = factory;
+            }
+            enemyCapacity += 2;
         }
     }
 

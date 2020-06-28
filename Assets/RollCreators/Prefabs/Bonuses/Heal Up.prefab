@@ -159,6 +159,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bonus_light
       objectReference: {fileID: 0}
+    - target: {fileID: 6497705072259955776, guid: 7cf4a16dc87dcf444a042ad1f6f77c07,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2135610265
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497705072259955776, guid: 7cf4a16dc87dcf444a042ad1f6f77c07,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8559931704672875743, guid: 7cf4a16dc87dcf444a042ad1f6f77c07,
         type: 3}
       propertyPath: m_LocalPosition.x
