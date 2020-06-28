@@ -31,8 +31,8 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject freezing;
     [SerializeField] private ImprovementFactory factory;
     private int doubleUpCount = 0;
-    private static int HORIZONTAL_MODEL_SIZE = 20;//138;
-    private static int VERTICAL_MODEL_SIZE = 20;//77;
+    private static int HORIZONTAL_MODEL_SIZE = 138;
+    private static int VERTICAL_MODEL_SIZE = 77;
 
     void Start()
     {
@@ -59,12 +59,12 @@ public class Game : MonoBehaviour
 
     public float GetHorizontalSize()
     {
-        return HORIZONTAL_MODEL_SIZE / 2;
+        return HORIZONTAL_MODEL_SIZE;
     }
 
     public float GetVerticalSize()
     {
-        return VERTICAL_MODEL_SIZE / 2;
+        return VERTICAL_MODEL_SIZE;
     }
 
     private IEnumerator SpawnEnemy()
