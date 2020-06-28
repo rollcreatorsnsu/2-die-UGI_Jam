@@ -7,11 +7,12 @@ public class Might : MonoBehaviour
 {
     public Weapon weapon;
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            if (enemy.isDead) return;
             enemy.Hit(weapon.damage);
         }
     }

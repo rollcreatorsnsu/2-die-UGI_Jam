@@ -8,10 +8,10 @@ public class Explosion : MonoBehaviour
     [SerializeField] private float explosionDamage;
     void Start()
     {
-        Destroy(this, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        Destroy(gameObject, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {

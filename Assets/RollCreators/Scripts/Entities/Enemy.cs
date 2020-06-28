@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackPerFrame;
     private GameObject[] players;
     private Animator animator;
-    private bool isDead = false;
+    public bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -93,11 +93,10 @@ public class Enemy : MonoBehaviour
             {
                 improvementFactory.CreateImprovement(transform.position);
             }
-            Destroy(this, animator.GetCurrentAnimatorStateInfo(0).length);
         }
     }
     
-    void OnCollisionStay2D(Collision2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && !isDead && !game.isPaused && !isFrozen)
         {

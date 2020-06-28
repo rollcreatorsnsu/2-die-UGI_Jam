@@ -19,11 +19,6 @@ public class PauseUI : MonoBehaviour
         game.isPaused = false;
     }
 
-    public void HowToPlay()
-    {
-        // TODO
-    }
-
     public void ExitGame()
     {
         ack.Show();
