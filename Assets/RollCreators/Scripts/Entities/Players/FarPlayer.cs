@@ -29,7 +29,7 @@ public class FarPlayer : MonoBehaviour
     {
         if (fireRate > 0) return;
         animator.Play($"Shot_{currentWeapon.name}");
-        GameObject bulletObject = Instantiate(emptyBullet);
+        GameObject bulletObject = Instantiate(emptyBullet, transform.position, Quaternion.identity);
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         bullet.game = game;
         bullet.weapon = currentWeapon;
