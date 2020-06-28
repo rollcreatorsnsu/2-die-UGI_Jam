@@ -7,7 +7,7 @@ public class Might : MonoBehaviour
 {
     public Weapon weapon;
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {

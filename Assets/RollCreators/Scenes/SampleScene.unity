@@ -813,6 +813,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 558158130282085474, guid: 70b46f95c4a446c4eb27de48a249a4ca,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5711264301971923964, guid: 70b46f95c4a446c4eb27de48a249a4ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1706,6 +1711,7 @@ GameObject:
   - component: {fileID: 1369628805}
   - component: {fileID: 1369628803}
   - component: {fileID: 1369628804}
+  - component: {fileID: 1369628806}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -1729,10 +1735,14 @@ MonoBehaviour:
   health: 100
   farPlayer: {fileID: 1926650644}
   nearPlayer: {fileID: 1780911818}
-  enemies: []
+  enemies:
+  - {fileID: 4255134054221780418, guid: 3e8e54e52975e584c9b69f2aa08373dc, type: 3}
+  - {fileID: 3147833936554704377, guid: 8b1bbae0e5123ec4499acc7ac5f8b448, type: 3}
+  - {fileID: 7047783580193565875, guid: 90ba1b937a361ed43b41eab46cc577eb, type: 3}
   inputController: {fileID: 1369628804}
   bigExplosion: {fileID: 0}
   freezing: {fileID: 0}
+  factory: {fileID: 1369628806}
 --- !u!114 &1369628804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1763,6 +1773,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1369628806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369628802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e12367c1a81bec74f829c4ef6b3b3f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game: {fileID: 1369628803}
+  speedUp: {fileID: 0}
+  healUp: {fileID: 0}
+  doubleUp: {fileID: 0}
+  blowUp: {fileID: 0}
+  freezeUp: {fileID: 0}
+  weaponsUp: []
 --- !u!1 &1405062466
 GameObject:
   m_ObjectHideFlags: 0
@@ -3110,6 +3139,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: -18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733782550315396570, guid: 2c18bee06553d874faaa2a515ef34327,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3784700038004102109, guid: 2c18bee06553d874faaa2a515ef34327,
         type: 3}

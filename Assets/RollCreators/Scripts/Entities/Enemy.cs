@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        transform.position += (transform.position - nearestPlayerCoord).normalized * speed;
+        transform.position += (nearestPlayerCoord - transform.position).normalized * speed * Time.deltaTime;
         float signedAngle = Vector2.SignedAngle(Vector2.up, nearestPlayerCoord - transform.position);
         transform.rotation = Quaternion.Euler(0, 0, signedAngle);
     }
@@ -96,8 +96,7 @@ public class Enemy : MonoBehaviour
             Destroy(this, animator.GetCurrentAnimatorStateInfo(0).length);
         }
     }
-
-    private void OnCollisionStay(Collision other)
+    void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player") && !isDead && !game.isPaused && !isFrozen)
         {
