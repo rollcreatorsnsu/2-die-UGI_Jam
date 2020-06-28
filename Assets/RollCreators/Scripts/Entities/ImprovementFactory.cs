@@ -41,7 +41,7 @@ public class ImprovementFactory : MonoBehaviour
             while (true)
             {
                 currentImprovement = weaponsUp[Random.Range(0, weaponsUp.Count)];
-                string weapon = currentImprovement.GetComponent<Weapon>().name;
+                string weapon = currentImprovement.GetComponent<Improvement>().name;
                 if (weapon != game.farPlayer.currentWeapon.name && weapon != game.nearPlayer.currentWeapon.name)
                 {
                     break;
