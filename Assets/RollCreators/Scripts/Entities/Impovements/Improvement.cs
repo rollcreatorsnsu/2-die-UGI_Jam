@@ -8,7 +8,7 @@ public class Improvement : MonoBehaviour
     public string name;
     public Sprite sprite;
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -16,7 +16,7 @@ public class Improvement : MonoBehaviour
             game.ApplyImprovement(this, other.transform.position);
             GameUI ui = FindObjectOfType<GameUI>();
             ui.ShowBonus(this);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

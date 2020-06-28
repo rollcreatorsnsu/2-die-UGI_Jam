@@ -25,7 +25,7 @@ public class FarPlayer : MonoBehaviour
         }
     }
 
-    public void Attack(Vector3 position)
+    public void Attack()
     {
         if (fireRate > 0) return;
         animator.Play($"Shot_{currentWeapon.name}");
@@ -33,7 +33,7 @@ public class FarPlayer : MonoBehaviour
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         bullet.game = game;
         bullet.weapon = currentWeapon;
-        bullet.direction = Quaternion.Euler(0, 0, Random.Range(-currentWeapon.spread, currentWeapon.spread)) * (position - transform.position).normalized;
+        bullet.direction = Quaternion.Euler(0, 0, Random.Range(-currentWeapon.spread, currentWeapon.spread) + transform.rotation.eulerAngles.z) * Vector3.up;
         fireRate = currentWeapon.rateOfFire / 1000f;
     }
 

@@ -14,17 +14,20 @@ public class Bullet : MonoBehaviour
     {
         if (game.isPaused) return;
         transform.position += direction * weapon.speed * Time.deltaTime;
+        float signedAngle = Vector2.SignedAngle(Vector2.up, direction);
+        transform.rotation = Quaternion.Euler(0, 0, signedAngle + 180);
         if (Vector3.Distance(Vector3.zero, transform.position) > game.GetVerticalSize() * game.GetHorizontalSize())
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            if (enemy.isDead) return;
             enemy.Hit(weapon.damage);
             if (weapon.isExplodable)
             {
@@ -40,7 +43,7 @@ public class Bullet : MonoBehaviour
             {
                 enemy.transform.position += (enemy.transform.position - transform.position).normalized * weapon.bounceDistance;
             }
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }
