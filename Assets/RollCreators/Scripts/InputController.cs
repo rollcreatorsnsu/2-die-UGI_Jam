@@ -45,6 +45,7 @@ public class InputController : MonoBehaviour
         }
 
         circleRadius += speed * Input.mouseScrollDelta.y * Time.deltaTime * 10;
+        if (circleRadius < 0) circleRadius = 0;
 
         Vector3 newFarPlayerPosition = game.farPlayer.transform.position;
         newFarPlayerPosition += (lastHitPoint - newFarPlayerPosition).normalized * speed * Time.deltaTime;
