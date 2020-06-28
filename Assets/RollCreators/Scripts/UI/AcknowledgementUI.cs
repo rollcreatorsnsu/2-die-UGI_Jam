@@ -12,7 +12,7 @@ public class AcknowledgementUI : MonoBehaviour
 
     public void Yes()
     {
-        Application.Quit();
+        SceneManager.LoadScene("Menu");
     }
 
     public void No()
