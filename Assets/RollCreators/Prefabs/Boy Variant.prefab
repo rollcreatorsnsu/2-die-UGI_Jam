@@ -24,6 +24,7 @@ MonoBehaviour:
     bounceDistance: 0
   emptyBullet: {fileID: 0}
   game: {fileID: 0}
+  ui: {fileID: 0}
 --- !u!1001 &5044324977466344896
 PrefabInstance:
   m_ObjectHideFlags: 0
