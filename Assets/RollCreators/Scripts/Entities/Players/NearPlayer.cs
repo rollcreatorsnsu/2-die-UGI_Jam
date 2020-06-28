@@ -12,6 +12,7 @@ public class NearPlayer : MonoBehaviour
     [SerializeField] private AudioSource swordSound;
     [SerializeField] private AudioSource flameSound;
     [SerializeField] private AudioSource batSound;
+    [SerializeField] private ParticleSystem flame;
 
     void Start()
     {
@@ -34,10 +35,12 @@ public class NearPlayer : MonoBehaviour
         if (currentWeapon.name == "Flamethrower")
         {
             animator.Play($"Attack_{currentWeapon.name}");
+            flame.Play();
         }
         else
         {
             animator.Play($"Attack_{currentWeapon.name}_{Random.Range(1, 3)}");
+            flame.Stop();
         }
 
         switch (currentWeapon.name)

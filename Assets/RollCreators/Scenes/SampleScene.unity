@@ -1548,6 +1548,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1313498989371121293, guid: 70b46f95c4a446c4eb27de48a249a4ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -5.8011255
+      objectReference: {fileID: 0}
     - target: {fileID: 1800655858367730311, guid: 70b46f95c4a446c4eb27de48a249a4ca,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -1608,6 +1613,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4233672256510926505, guid: 70b46f95c4a446c4eb27de48a249a4ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 1.582243
+      objectReference: {fileID: 0}
     - target: {fileID: 4355039941839953469, guid: 70b46f95c4a446c4eb27de48a249a4ca,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -1647,6 +1657,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627811425749287409, guid: 70b46f95c4a446c4eb27de48a249a4ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -40.486107
       objectReference: {fileID: 0}
     - target: {fileID: 4958274987209716002, guid: 70b46f95c4a446c4eb27de48a249a4ca,
         type: 3}
@@ -1803,6 +1818,16 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7357890623173181303, guid: 70b46f95c4a446c4eb27de48a249a4ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.37618
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627846033894026911, guid: 70b46f95c4a446c4eb27de48a249a4ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 14.357318
+      objectReference: {fileID: 0}
     - target: {fileID: 7685824643226292825, guid: 70b46f95c4a446c4eb27de48a249a4ca,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -1822,6 +1847,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184777628807618716, guid: 70b46f95c4a446c4eb27de48a249a4ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 1.4854939
       objectReference: {fileID: 0}
     - target: {fileID: 8322911105302993942, guid: 70b46f95c4a446c4eb27de48a249a4ca,
         type: 3}
@@ -1845,6 +1875,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70b46f95c4a446c4eb27de48a249a4ca, type: 3}
+--- !u!198 &738662960 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3278271266856399324, guid: 70b46f95c4a446c4eb27de48a249a4ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 738662959}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &760839765
 GameObject:
   m_ObjectHideFlags: 0
@@ -4416,6 +4452,7 @@ MonoBehaviour:
   swordSound: {fileID: 737740226}
   flameSound: {fileID: 1389358502}
   batSound: {fileID: 1470512864}
+  flame: {fileID: 738662960}
 --- !u!1 &1815301930
 GameObject:
   m_ObjectHideFlags: 0

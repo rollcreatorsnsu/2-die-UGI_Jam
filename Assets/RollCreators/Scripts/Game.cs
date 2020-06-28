@@ -36,6 +36,8 @@ public class Game : MonoBehaviour
     public AudioSource impSound;
     public AudioSource hunterSound;
     public AudioSource devilSound;
+    public AudioSource die1Sound;
+    public AudioSource die2Sound;
     private int doubleUpCount = 0;
     private static int HORIZONTAL_MODEL_SIZE = 138;
     private static int VERTICAL_MODEL_SIZE = 77;
@@ -100,6 +102,8 @@ public class Game : MonoBehaviour
         health -= damage;
         if (health < 0)
         {
+            die1Sound.Play();
+            die2Sound.Play();
             farPlayer.Die();
             nearPlayer.Die();
         }
