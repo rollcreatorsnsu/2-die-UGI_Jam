@@ -70,7 +70,7 @@ public class Game : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5); // TODO: Balance
+            yield return new WaitForSeconds(50); // TODO: Balance
             if (isPaused) continue;
             Instantiate(enemies[Random.Range(0, enemies.Count)]);
         }
