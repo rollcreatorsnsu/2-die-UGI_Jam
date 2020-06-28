@@ -3025,7 +3025,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 738662959}
   m_PrefabAsset: {fileID: 0}
---- !u!60 &1124363325
+--- !u!60 &1124363327
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3661,7 +3661,7 @@ MonoBehaviour:
   speed: 20
   game: {fileID: 1369628803}
   circleCenter: {x: 0, y: 0, z: 0}
-  circleRadius: 30
+  circleRadius: 10
 --- !u!4 &1369628805
 Transform:
   m_ObjectHideFlags: 0
