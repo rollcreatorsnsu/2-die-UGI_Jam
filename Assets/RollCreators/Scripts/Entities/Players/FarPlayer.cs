@@ -33,8 +33,8 @@ public class FarPlayer : MonoBehaviour
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         bullet.game = game;
         bullet.weapon = currentWeapon;
-        bullet.direction = Quaternion.Euler(0, 0, Random.Range(-currentWeapon.spread, currentWeapon.spread)) * (transform.position - position).normalized;
-        fireRate = currentWeapon.rateOfFire;
+        bullet.direction = Quaternion.Euler(0, 0, Random.Range(-currentWeapon.spread, currentWeapon.spread)) * (position - transform.position).normalized;
+        fireRate = currentWeapon.rateOfFire / 1000f;
     }
 
     public void Die()
