@@ -23,6 +23,7 @@ public class InputController : MonoBehaviour
         Vector3 cameraPos = Camera.main.transform.position;
         cameraPos = circleCenter;
         cameraPos.z = -10;
+        Camera.main.transform.position = cameraPos;
         if (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x < -game.GetHorizontalSize() ||
             Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x > game.GetHorizontalSize())
         {
@@ -34,7 +35,6 @@ public class InputController : MonoBehaviour
             cameraPos.y = cameraPrevPos.y;
         }
         Camera.main.transform.position = cameraPos;
-
         if (Input.GetMouseButton(0))
         {
             game.farPlayer.Attack();
