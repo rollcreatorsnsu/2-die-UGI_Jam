@@ -16,6 +16,7 @@ public class InputController : MonoBehaviour
     {
         if (game.health <= 0 || game.isPaused) return;
         lastHitPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        lastHitPoint.z = 0;
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -52,7 +53,9 @@ public class InputController : MonoBehaviour
         game.farPlayer.transform.position = newFarPlayerPosition;
         game.nearPlayer.transform.position = newFarPlayerPosition + (circleCenter - newFarPlayerPosition) * 2;
 
-        game.farPlayer.transform.rotation = Quaternion.LookRotation(lastHitPoint - game.farPlayer.transform.position);
-        game.nearPlayer.transform.rotation = Quaternion.LookRotation(lastHitPoint - game.nearPlayer.transform.position);
+        float signedAngle = Vector2.SignedAngle(Vector2.up, lastHitPoint - game.farPlayer.transform.position);
+        game.farPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle);
+        signedAngle = Vector2.SignedAngle(Vector2.up, lastHitPoint - game.nearPlayer.transform.position);
+        game.nearPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle);
     }
 }

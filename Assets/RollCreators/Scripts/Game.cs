@@ -29,9 +29,10 @@ public class Game : MonoBehaviour
     [SerializeField] private InputController inputController;
     [SerializeField] private GameObject bigExplosion;
     [SerializeField] private GameObject freezing;
+    [SerializeField] private ImprovementFactory factory;
     private int doubleUpCount = 0;
-    private static int HORIZONTAL_MODEL_SIZE = 138;
-    private static int VERTICAL_MODEL_SIZE = 77;
+    private static int HORIZONTAL_MODEL_SIZE = 20;//138;
+    private static int VERTICAL_MODEL_SIZE = 20;//77;
 
     void Start()
     {
@@ -70,9 +71,12 @@ public class Game : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(50); // TODO: Balance
+            yield return new WaitForSeconds(5); // TODO: Balance
             if (isPaused) continue;
-            Instantiate(enemies[Random.Range(0, enemies.Count)]);
+            GameObject e = Instantiate(enemies[Random.Range(0, enemies.Count)]);
+            Enemy enemy = e.GetComponent<Enemy>();
+            enemy.game = this;
+            enemy.improvementFactory = factory;
         }
     }
 
