@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -14,12 +15,7 @@ public class InputController : MonoBehaviour
     void Update()
     {
         if (game.health <= 0 || game.isPaused) return;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            lastHitPoint = hit.point;
-        }
+        lastHitPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -29,34 +25,34 @@ public class InputController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            circleCenter += Vector3.up * speed;
+            circleCenter += Vector3.up * speed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            circleCenter += Vector3.left * speed;
+            circleCenter += Vector3.left * speed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            circleCenter += Vector3.down * speed;
+            circleCenter += Vector3.down * speed * Time.deltaTime;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            circleCenter += Vector3.right * speed;
+            circleCenter += Vector3.right * speed * Time.deltaTime;
         }
 
         circleRadius += speed * Input.mouseScrollDelta.y;
 
         Vector3 newFarPlayerPosition = game.farPlayer.transform.position;
-        newFarPlayerPosition += (newFarPlayerPosition - lastHitPoint).normalized * speed;
-        newFarPlayerPosition += (newFarPlayerPosition - circleCenter).normalized *
+        newFarPlayerPosition += (lastHitPoint - newFarPlayerPosition).normalized * speed;
+        newFarPlayerPosition += (circleCenter - newFarPlayerPosition).normalized *
                                 (Vector3.Distance(newFarPlayerPosition, circleCenter) - circleRadius);
         game.farPlayer.transform.position = newFarPlayerPosition;
-        game.nearPlayer.transform.position = newFarPlayerPosition + (newFarPlayerPosition - circleCenter) * 2;
+        game.nearPlayer.transform.position = newFarPlayerPosition + (circleCenter - newFarPlayerPosition) * 2;
 
-        game.farPlayer.transform.LookAt(lastHitPoint);
-        game.nearPlayer.transform.LookAt(lastHitPoint);
+        game.farPlayer.transform.rotation = Quaternion.LookRotation(lastHitPoint - game.farPlayer.transform.position);
+        game.nearPlayer.transform.rotation = Quaternion.LookRotation(lastHitPoint - game.nearPlayer.transform.position);
     }
 }
