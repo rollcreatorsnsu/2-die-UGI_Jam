@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1442524576109070887}
   - component: {fileID: 4853675054862920447}
   m_Layer: 0
-  m_Name: Bonus_effect_explose
+  m_Name: Explose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,4 +132,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e731f7e12336448bd92d6e6dc0afca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionDamage: 100
+  explosionDamage: 10

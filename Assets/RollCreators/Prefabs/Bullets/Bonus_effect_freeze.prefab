@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4813556478058340789}
   - component: {fileID: 210512372475207995}
   - component: {fileID: 7472073205229615481}
+  - component: {fileID: 1777780744397905378}
   m_Layer: 0
   m_Name: Bonus_effect_freeze
   m_TagString: Untagged
@@ -118,3 +119,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.325
+--- !u!114 &1777780744397905378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4367741945153663113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552ba4eabf864404fba1a88aa52120be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

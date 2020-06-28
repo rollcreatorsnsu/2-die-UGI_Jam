@@ -110,7 +110,8 @@ MonoBehaviour:
     fireDamageRate: 0
     bounceDistance: 0
   direction: {x: 0, y: 0, z: 0}
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 4642148188825957838, guid: 0d8125b6e5c10c44480edc0dc9676fb9,
+    type: 3}
 --- !u!50 &125189022574899910
 Rigidbody2D:
   serializedVersion: 4
