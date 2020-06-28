@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Machine Gun
-  sprite: {fileID: 7216678502231786463, guid: db2d21314ac884e479c522e13fce5bf1, type: 3}
+  sprite: {fileID: 1080825480604336155, guid: af0f58b593d852a4a99867c76854a84f, type: 3}
   weapon:
     name: Machine Gun
     damage: 5
