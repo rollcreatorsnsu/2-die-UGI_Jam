@@ -9,6 +9,9 @@ public class NearPlayer : MonoBehaviour
     private float fireRate = 0;
     [SerializeField] private Game game;
     [SerializeField] private GameUI ui;
+    [SerializeField] private AudioSource swordSound;
+    [SerializeField] private AudioSource flameSound;
+    [SerializeField] private AudioSource batSound;
 
     void Start()
     {
@@ -28,7 +31,27 @@ public class NearPlayer : MonoBehaviour
     public void Attack()
     {
         if (fireRate > 0) return;
-        animator.Play($"Attack_{currentWeapon.name}_1");
+        if (currentWeapon.name == "Flamethrower")
+        {
+            animator.Play($"Attack_{currentWeapon.name}");
+        }
+        else
+        {
+            animator.Play($"Attack_{currentWeapon.name}_{Random.Range(1, 3)}");
+        }
+
+        switch (currentWeapon.name)
+        {
+            case "Sword":
+                swordSound.Play();
+                break;
+            case "Flamethrower":
+                flameSound.Play();
+                break;
+            case "Bat":
+                batSound.Play();
+                break;
+        }
         fireRate = currentWeapon.rateOfFire / 1000f;
     }
 

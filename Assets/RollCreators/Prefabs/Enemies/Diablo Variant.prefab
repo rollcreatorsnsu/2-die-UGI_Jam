@@ -66,6 +66,7 @@ MonoBehaviour:
   points: 30
   speed: 7
   attackPerFrame: 30
+  name: Diablo
   isDead: 0
 --- !u!1001 &4384877974027351359
 PrefabInstance:

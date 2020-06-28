@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int points;
     [SerializeField] private float speed;
     [SerializeField] private float attackPerFrame;
+    [SerializeField] private string name;
+    private AudioSource deadSound;
     private GameObject[] players;
     private Animator animator;
     public bool isDead = false;
@@ -21,6 +23,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        deadSound = game.enemyDeadSound;
         SetRandomStartPosition();
         players = GameObject.FindGameObjectsWithTag("Player");
         animator = GetComponent<Animator>();
@@ -86,6 +89,7 @@ public class Enemy : MonoBehaviour
     {
         if (health < 0)
         {
+            deadSound.Play();
             isDead = true;
             game.points += points;
             animator.Play("Die");
@@ -101,6 +105,27 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && !isDead && !game.isPaused && !isFrozen)
         {
             animator.Play("Move");
+            switch (name)
+            {
+                case "Imp":
+                    if (!game.impSound.isPlaying)
+                    {
+                        game.impSound.Play();
+                    }
+                    break;
+                case "Hunter":
+                    if (!game.hunterSound.isPlaying)
+                    {
+                        game.hunterSound.Play();
+                    }
+                    break;
+                case "Devil":
+                    if (!game.devilSound.isPlaying)
+                    {
+                        game.devilSound.Play();
+                    }
+                    break;
+            }
             game.Hit(attackPerFrame);
         }
     }

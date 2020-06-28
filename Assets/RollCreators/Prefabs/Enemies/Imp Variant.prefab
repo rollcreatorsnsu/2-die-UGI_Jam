@@ -66,6 +66,7 @@ MonoBehaviour:
   points: 5
   speed: 9
   attackPerFrame: 5
+  name: Imp
   isDead: 0
 --- !u!1001 &5237796549421138784
 PrefabInstance:

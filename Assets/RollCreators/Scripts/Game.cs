@@ -30,6 +30,12 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject bigExplosion;
     [SerializeField] private GameObject freezing;
     [SerializeField] private ImprovementFactory factory;
+    [SerializeField] private AudioSource hitSound;
+    public AudioSource enemyDeadSound;
+    public AudioSource bonusSound;
+    public AudioSource impSound;
+    public AudioSource hunterSound;
+    public AudioSource devilSound;
     private int doubleUpCount = 0;
     private static int HORIZONTAL_MODEL_SIZE = 138;
     private static int VERTICAL_MODEL_SIZE = 77;
@@ -89,6 +95,7 @@ public class Game : MonoBehaviour
     public void Hit(float damage)
     {
         if (Time.time - lastHit < 0.5) return;
+        hitSound.Play();
         lastHit = Time.time;
         health -= damage;
         if (health < 0)

@@ -66,6 +66,7 @@ MonoBehaviour:
   points: 15
   speed: 14
   attackPerFrame: 15
+  name: Hunter
   isDead: 0
 --- !u!1001 &8568475561950611499
 PrefabInstance:

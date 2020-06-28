@@ -8,6 +8,9 @@ public class FarPlayer : MonoBehaviour
     [SerializeField] private GameObject emptyBullet;
     [SerializeField] private Game game;
     [SerializeField] private GameUI ui;
+    [SerializeField] private AudioSource pistolSound;
+    [SerializeField] private AudioSource minigunSound;
+    [SerializeField] private AudioSource plasmagunSound;
     private Animator animator;
     private float fireRate = 0;
     
@@ -29,6 +32,18 @@ public class FarPlayer : MonoBehaviour
     {
         if (fireRate > 0) return;
         animator.Play($"Shot_{currentWeapon.name}");
+        switch (currentWeapon.name)
+        {
+            case "Pistol":
+                pistolSound.Play();
+                break;
+            case "Machine Gun":
+                minigunSound.Play();
+                break;
+            case "Plasmo Gun":
+                plasmagunSound.Play();
+                break;
+        }
         GameObject bulletObject = Instantiate(emptyBullet, transform.position, Quaternion.identity);
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         bullet.game = game;

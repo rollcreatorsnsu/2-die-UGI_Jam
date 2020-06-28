@@ -48,6 +48,8 @@ public class ImprovementFactory : MonoBehaviour
                 }
             }
         }
+
+        currentImprovement.GetComponent<Improvement>().bonusAudio = game.bonusSound;
         Instantiate(currentImprovement, position, Quaternion.identity);
         
     }
