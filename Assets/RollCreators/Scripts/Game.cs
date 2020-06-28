@@ -33,6 +33,7 @@ public class Game : MonoBehaviour
     private int doubleUpCount = 0;
     private static int HORIZONTAL_MODEL_SIZE = 138;
     private static int VERTICAL_MODEL_SIZE = 77;
+    private float lastHit = 0;
 
     void Start()
     {
@@ -82,6 +83,8 @@ public class Game : MonoBehaviour
 
     public void Hit(float damage)
     {
+        if (Time.time - lastHit < 0.5) return;
+        lastHit = Time.time;
         health -= damage;
         if (health < 0)
         {
