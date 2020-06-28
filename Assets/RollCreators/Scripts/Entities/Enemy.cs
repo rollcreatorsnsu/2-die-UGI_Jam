@@ -96,12 +96,14 @@ public class Enemy : MonoBehaviour
             Destroy(this, animator.GetCurrentAnimatorStateInfo(0).length);
         }
     }
-    void OnCollisionStay2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log("Колайдер");
         if (other.gameObject.CompareTag("Player") && !isDead && !game.isPaused && !isFrozen)
         {
             animator.Play("Attack");
             game.Hit(attackPerFrame);
+            Debug.Log("Колайдер");
         }
     }
 }
