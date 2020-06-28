@@ -2285,7 +2285,7 @@ MonoBehaviour:
   scoreText: {fileID: 2145804472}
   healtSlider: {fileID: 1144133349}
   bonusAnimator: {fileID: 943591313}
-  bonusImage: {fileID: 0}
+  bonusImage: {fileID: 1213191429}
   bonusText: {fileID: 230001507}
   farWeaponImage: {fileID: 1405062469}
   nearWeaponImage: {fileID: 2055458136}
