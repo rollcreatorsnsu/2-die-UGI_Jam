@@ -89,18 +89,19 @@ public class Enemy : MonoBehaviour
             isDead = true;
             game.points += points;
             animator.Play("Die");
-            if (Random.value > 0.1)
+            if (Random.value < 0.1)
             {
                 improvementFactory.CreateImprovement(transform.position);
             }
             Destroy(this, animator.GetCurrentAnimatorStateInfo(0).length);
         }
     }
+    
     void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player") && !isDead && !game.isPaused && !isFrozen)
         {
-            animator.Play("Attack");
+            animator.Play("Move");
             game.Hit(attackPerFrame);
         }
     }

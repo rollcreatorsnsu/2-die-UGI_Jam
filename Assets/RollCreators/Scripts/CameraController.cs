@@ -10,39 +10,35 @@ public class CameraController : MonoBehaviour
     
     void Update()
     {
-        if (!game.isPaused) return;
+        if (game.isPaused) return;
         float xPos = Input.mousePosition.x;
         float yPos = Input.mousePosition.y;
         if (xPos < panDetect)
         {
-            transform.position += new Vector3(-panSpeed, 0);
-            if (transform.position.x < -game.GetHorizontalSize())
+            if (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x >= -game.GetHorizontalSize())
             {
-                transform.position = new Vector3(-game.GetHorizontalSize(), transform.position.y);
+                transform.position += new Vector3(-panSpeed * Time.deltaTime, 0);
             }
         }
         if (xPos > Screen.width - panDetect)
         {
-            transform.position += new Vector3(panSpeed, 0);
-            if (transform.position.x > game.GetHorizontalSize())
+            if (Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x <= game.GetHorizontalSize())
             {
-                transform.position = new Vector3(game.GetHorizontalSize(), transform.position.y);
+                transform.position += new Vector3(panSpeed * Time.deltaTime, 0);
             }
         }
         if (yPos < panDetect)
         {
-            transform.position += new Vector3(0, -panSpeed);
-            if (transform.position.y < -game.GetVerticalSize())
+            if (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y >= -game.GetVerticalSize())
             {
-                transform.position = new Vector3(transform.position.x, -game.GetVerticalSize());
+                transform.position += new Vector3(0, -panSpeed * Time.deltaTime);
             }
         }
         if (yPos > Screen.height - panDetect)
         {
-            transform.position += new Vector3(0, panSpeed);
-            if (transform.position.y > game.GetVerticalSize())
+            if (Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).y <= game.GetVerticalSize())
             {
-                transform.position = new Vector3(transform.position.x, game.GetVerticalSize());
+                transform.position += new Vector3(0, panSpeed * Time.deltaTime);
             }
         }
     }
