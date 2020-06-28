@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
             isDead = true;
             game.points += points;
             animator.Play("Die");
-            if (Random.value < 0.1)
+            if (Random.value < 0.2)
             {
                 improvementFactory.CreateImprovement(transform.position);
             }

@@ -3629,9 +3629,9 @@ MonoBehaviour:
   farPlayer: {fileID: 1926650644}
   nearPlayer: {fileID: 1780911818}
   enemies:
-  - {fileID: 4255134054221780418, guid: 3e8e54e52975e584c9b69f2aa08373dc, type: 3}
-  - {fileID: 3147833936554704377, guid: 8b1bbae0e5123ec4499acc7ac5f8b448, type: 3}
   - {fileID: 7047783580193565875, guid: 90ba1b937a361ed43b41eab46cc577eb, type: 3}
+  - {fileID: 3147833936554704377, guid: 8b1bbae0e5123ec4499acc7ac5f8b448, type: 3}
+  - {fileID: 4255134054221780418, guid: 3e8e54e52975e584c9b69f2aa08373dc, type: 3}
   inputController: {fileID: 1369628804}
   bigExplosion: {fileID: 4642148188825957838, guid: fc8dd88d3c4bca343b0f725019c55423,
     type: 3}
