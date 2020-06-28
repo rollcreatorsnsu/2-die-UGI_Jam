@@ -85,7 +85,8 @@ public class Game : MonoBehaviour
             if (isPaused) continue;
             for (var i = 0; i < enemyCapacity; i++)
             {
-                GameObject e = Instantiate(enemies[Random.Range(0, enemies.Count)]);
+                int value = Random.Range(0, 8);
+                GameObject e = value < 5 ? Instantiate(enemies[0]) : value < 7 ? Instantiate(enemies[1]) : Instantiate(enemies[2]);
                 Enemy enemy = e.GetComponent<Enemy>();
                 enemy.game = this;
                 enemy.improvementFactory = factory;

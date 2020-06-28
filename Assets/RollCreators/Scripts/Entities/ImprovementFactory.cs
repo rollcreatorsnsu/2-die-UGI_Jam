@@ -16,23 +16,23 @@ public class ImprovementFactory : MonoBehaviour
     {
         GameObject currentImprovement = null;
         float rand = Random.value;
-        if (rand < 0.2)
+        if (rand < 0.1)
         {
             currentImprovement = speedUp;
         }
-        else if (rand < 0.4)
+        else if (rand < 0.3)
         {
             currentImprovement = healUp;
         }
-        else if (rand < 0.5)
+        else if (rand < 0.4)
         {
             currentImprovement = doubleUp;
         }
-        else if (rand < 0.6)
+        else if (rand < 0.5)
         {
             currentImprovement = blowUp;
         }
-        else if (rand < 0.8)
+        else if (rand < 0.65)
         {
             currentImprovement = freezeUp;
         }
