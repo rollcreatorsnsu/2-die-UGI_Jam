@@ -9,7 +9,7 @@ public class Freezing : MonoBehaviour
         Destroy(this, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -18,7 +18,7 @@ public class Freezing : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision other)
+    private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {

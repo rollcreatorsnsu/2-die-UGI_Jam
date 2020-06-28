@@ -28,8 +28,8 @@ public class NearPlayer : MonoBehaviour
     public void Attack()
     {
         if (fireRate > 0) return;
-        animator.Play($"Attack_{currentWeapon.name}");
-        fireRate = currentWeapon.rateOfFire;
+        animator.Play($"Attack_{currentWeapon.name}_1");
+        fireRate = currentWeapon.rateOfFire / 1000f;
     }
 
     public void Die()

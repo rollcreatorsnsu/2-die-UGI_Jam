@@ -13,10 +13,10 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         if (game.isPaused) return;
-        transform.position += direction * weapon.speed;
+        transform.position += direction * weapon.speed * Time.deltaTime;
         if (Vector3.Distance(Vector3.zero, transform.position) > game.GetVerticalSize() * game.GetHorizontalSize())
         {
-            DestroyImmediate(this);
+            Destroy(this);
         }
     }
 
@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour
             {
                 enemy.transform.position += (enemy.transform.position - transform.position).normalized * weapon.bounceDistance;
             }
-            DestroyImmediate(this);
+            Destroy(this);
         }
     }
 }

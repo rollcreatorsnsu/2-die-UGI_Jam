@@ -29,12 +29,12 @@ public class FarPlayer : MonoBehaviour
     {
         if (fireRate > 0) return;
         animator.Play($"Shot_{currentWeapon.name}");
-        GameObject bulletObject = Instantiate(emptyBullet);
+        GameObject bulletObject = Instantiate(emptyBullet, transform.position, Quaternion.identity);
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         bullet.game = game;
         bullet.weapon = currentWeapon;
-        bullet.direction = Quaternion.Euler(0, 0, Random.Range(-currentWeapon.spread, currentWeapon.spread)) * (transform.position - position).normalized;
-        fireRate = currentWeapon.rateOfFire;
+        bullet.direction = Quaternion.Euler(0, 0, Random.Range(-currentWeapon.spread, currentWeapon.spread)) * (position - transform.position).normalized;
+        fireRate = currentWeapon.rateOfFire / 1000f;
     }
 
     public void Die()

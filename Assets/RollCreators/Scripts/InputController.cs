@@ -16,6 +16,7 @@ public class InputController : MonoBehaviour
     {
         if (game.health <= 0 || game.isPaused) return;
         lastHitPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        lastHitPoint.z = 0;
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -43,16 +44,24 @@ public class InputController : MonoBehaviour
             circleCenter += Vector3.right * speed * Time.deltaTime;
         }
 
-        circleRadius += speed * Input.mouseScrollDelta.y;
+        circleRadius += speed * Input.mouseScrollDelta.y * Time.deltaTime;
 
         Vector3 newFarPlayerPosition = game.farPlayer.transform.position;
-        newFarPlayerPosition += (lastHitPoint - newFarPlayerPosition).normalized * speed;
-        newFarPlayerPosition += (circleCenter - newFarPlayerPosition).normalized *
-                                (Vector3.Distance(newFarPlayerPosition, circleCenter) - circleRadius);
-        game.farPlayer.transform.position = newFarPlayerPosition;
-        game.nearPlayer.transform.position = newFarPlayerPosition + (circleCenter - newFarPlayerPosition) * 2;
+        if (Vector3.Distance(lastHitPoint, newFarPlayerPosition) > 6)
+        {
+            newFarPlayerPosition += (lastHitPoint - newFarPlayerPosition).normalized * speed;
+            float diff = Vector3.Distance(newFarPlayerPosition, circleCenter) - circleRadius;
+            if (Mathf.Abs(diff) >= 1)
+            {
+                newFarPlayerPosition += (circleCenter - newFarPlayerPosition).normalized * diff;
+                game.farPlayer.transform.position = newFarPlayerPosition;
+                game.nearPlayer.transform.position = newFarPlayerPosition + (circleCenter - newFarPlayerPosition) * 2;
+            }
+        }
 
-        game.farPlayer.transform.rotation = Quaternion.LookRotation(lastHitPoint - game.farPlayer.transform.position);
-        game.nearPlayer.transform.rotation = Quaternion.LookRotation(lastHitPoint - game.nearPlayer.transform.position);
+        float signedAngle = Vector2.SignedAngle(Vector2.up, lastHitPoint - game.farPlayer.transform.position);
+        game.farPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle);
+        signedAngle = Vector2.SignedAngle(Vector2.up, lastHitPoint - game.nearPlayer.transform.position);
+        game.nearPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle + 180);
     }
 }
