@@ -16,6 +16,7 @@ public class InputController : MonoBehaviour
     {
         if (game.health <= 0 || game.isPaused) return;
         lastHitPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        lastHitPoint.z = 0;
 
         if (Input.GetMouseButtonUp(0))
         {

@@ -61,7 +61,8 @@ public class Enemy : MonoBehaviour
         }
 
         transform.position += (transform.position - nearestPlayerCoord).normalized * speed;
-        transform.LookAt(nearestPlayerCoord);
+        float signedAngle = Vector2.SignedAngle(Vector2.up, nearestPlayerCoord - transform.position);
+        transform.rotation = Quaternion.Euler(0, 0, signedAngle);
     }
 
     public void Hit(float damage)

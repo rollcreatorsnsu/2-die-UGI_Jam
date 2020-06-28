@@ -873,6 +873,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Girl Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8322911105302993942, guid: 70b46f95c4a446c4eb27de48a249a4ca,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70b46f95c4a446c4eb27de48a249a4ca, type: 3}
 --- !u!1 &748013675
@@ -3120,6 +3125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058877848488568037, guid: 2c18bee06553d874faaa2a515ef34327,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5183856727758500434, guid: 2c18bee06553d874faaa2a515ef34327,
         type: 3}
