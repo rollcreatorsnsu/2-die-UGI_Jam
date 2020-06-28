@@ -13,6 +13,10 @@ public class Might : MonoBehaviour
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             if (enemy.isDead) return;
+            if (weapon.bounceDistance > 0)
+            {
+                enemy.transform.position += (enemy.transform.position - transform.position).normalized * weapon.bounceDistance;
+            }
             enemy.Hit(weapon.damage);
         }
     }

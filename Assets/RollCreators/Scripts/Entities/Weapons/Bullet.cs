@@ -38,11 +38,7 @@ public class Bullet : MonoBehaviour
             {
                 StartCoroutine(enemy.Fire(weapon.fireDamageRate, weapon.fireDamagePercent));
             }
-
-            if (weapon.bounceDistance > 0)
-            {
-                enemy.transform.position += (enemy.transform.position - transform.position).normalized * weapon.bounceDistance;
-            }
+            
             Destroy(gameObject);
         }
     }

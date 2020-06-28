@@ -18,7 +18,7 @@ public class InputController : MonoBehaviour
         lastHitPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         lastHitPoint.z = 0;
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButton(0))
         {
             game.farPlayer.Attack();
             game.nearPlayer.Attack();
