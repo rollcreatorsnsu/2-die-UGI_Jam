@@ -14,6 +14,8 @@ public class Bullet : MonoBehaviour
     {
         if (game.isPaused) return;
         transform.position += direction * weapon.speed * Time.deltaTime;
+        float signedAngle = Vector2.SignedAngle(Vector2.up, direction);
+        transform.rotation = Quaternion.Euler(0, 0, signedAngle);
         if (Vector3.Distance(Vector3.zero, transform.position) > game.GetVerticalSize() * game.GetHorizontalSize())
         {
             Destroy(gameObject);

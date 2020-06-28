@@ -20,7 +20,7 @@ public class InputController : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            game.farPlayer.Attack(lastHitPoint);
+            game.farPlayer.Attack();
             game.nearPlayer.Attack();
         }
 

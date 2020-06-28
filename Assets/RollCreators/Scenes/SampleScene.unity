@@ -3731,7 +3731,7 @@ PrefabInstance:
         type: 3}
       propertyPath: emptyBullet
       value: 
-      objectReference: {fileID: 7432376849611020190, guid: f8fd56952ed74984ea7a4e874e0ef7a6,
+      objectReference: {fileID: 7710795904438402185, guid: 4ddc108af9286e34e898a5044a587a88,
         type: 3}
     - target: {fileID: 8368843570462978179, guid: 2c18bee06553d874faaa2a515ef34327,
         type: 3}
