@@ -11,7 +11,7 @@ public class Explosion : MonoBehaviour
         Destroy(this, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {

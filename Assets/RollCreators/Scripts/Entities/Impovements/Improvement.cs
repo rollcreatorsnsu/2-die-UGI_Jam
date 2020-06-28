@@ -8,7 +8,7 @@ public class Improvement : MonoBehaviour
     public string name;
     public Sprite sprite;
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {

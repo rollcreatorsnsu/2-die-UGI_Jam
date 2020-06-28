@@ -44,13 +44,15 @@ public class InputController : MonoBehaviour
             circleCenter += Vector3.right * speed * Time.deltaTime;
         }
 
-        circleRadius += speed * Input.mouseScrollDelta.y * Time.deltaTime;
+        circleRadius += speed * Input.mouseScrollDelta.y * Time.deltaTime * 10;
 
         Vector3 newFarPlayerPosition = game.farPlayer.transform.position;
+        bool needFlip = false;
         if (Vector3.Distance(lastHitPoint, newFarPlayerPosition) > 6)
         {
             newFarPlayerPosition += (lastHitPoint - newFarPlayerPosition).normalized * speed;
             float diff = Vector3.Distance(newFarPlayerPosition, circleCenter) - circleRadius;
+            needFlip = diff < 0;
             if (Mathf.Abs(diff) >= 1)
             {
                 newFarPlayerPosition += (circleCenter - newFarPlayerPosition).normalized * diff;
@@ -60,8 +62,8 @@ public class InputController : MonoBehaviour
         }
 
         float signedAngle = Vector2.SignedAngle(Vector2.up, lastHitPoint - game.farPlayer.transform.position);
-        game.farPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle);
+        game.farPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle + (needFlip ? 180 : 0));
         signedAngle = Vector2.SignedAngle(Vector2.up, lastHitPoint - game.nearPlayer.transform.position);
-        game.nearPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle + 180);
+        game.nearPlayer.transform.rotation = Quaternion.Euler(0, 0, signedAngle + 180 + (needFlip ? 180 : 0));
     }
 }
