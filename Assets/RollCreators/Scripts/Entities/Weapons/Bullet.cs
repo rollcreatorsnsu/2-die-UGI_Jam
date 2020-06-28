@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
         transform.position += direction * weapon.speed * Time.deltaTime;
         if (Vector3.Distance(Vector3.zero, transform.position) > game.GetVerticalSize() * game.GetHorizontalSize())
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
             {
                 enemy.transform.position += (enemy.transform.position - transform.position).normalized * weapon.bounceDistance;
             }
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

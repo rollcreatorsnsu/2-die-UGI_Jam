@@ -2056,12 +2056,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 1369628803}
-  speedUp: {fileID: 0}
-  healUp: {fileID: 0}
-  doubleUp: {fileID: 0}
-  blowUp: {fileID: 0}
-  freezeUp: {fileID: 0}
-  weaponsUp: []
+  speedUp: {fileID: 175064271085789321, guid: eacbb0c1fe8a20c47964bfbb145e1df6, type: 3}
+  healUp: {fileID: 175064271085789321, guid: 55b523a872565e04b8e0eee3457b2dae, type: 3}
+  doubleUp: {fileID: 175064271085789321, guid: 74fb5d19544f1634d91751b0dc0d17a1, type: 3}
+  blowUp: {fileID: 175064271085789321, guid: 5d0c1c2be5d283d46bb7b7de01608df4, type: 3}
+  freezeUp: {fileID: 175064271085789321, guid: 4ab2e47dc389dcd4d8ea945f6494bcec, type: 3}
+  weaponsUp:
+  - {fileID: 175064271085789321, guid: ace363c3ba0b7714b998e7a6be61d148, type: 3}
+  - {fileID: 175064271085789321, guid: 44559500b7e995340b75430f65868a4f, type: 3}
+  - {fileID: 175064271085789321, guid: 133e45fbd9a2341448fa15f8262f1d4a, type: 3}
+  - {fileID: 175064271085789321, guid: 2b724b2f8b3b2644ab9cc2842e66b162, type: 3}
+  - {fileID: 175064271085789321, guid: 28ead505e8b9ed944a6adb6ea57ada0e, type: 3}
+  - {fileID: 175064271085789321, guid: ef5e82fe21be7fb4d90b977a805c5562, type: 3}
 --- !u!1 &1405062466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,7 +2131,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 3852784490799252263, guid: db2d21314ac884e479c522e13fce5bf1,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3890,7 +3897,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -3457239038662505116, guid: db2d21314ac884e479c522e13fce5bf1,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

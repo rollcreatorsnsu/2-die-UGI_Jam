@@ -8,7 +8,7 @@ public class Explosion : MonoBehaviour
     [SerializeField] private float explosionDamage;
     void Start()
     {
-        Destroy(this, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        Destroy(gameObject, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
 
     private void OnTriggerEnter(Collider2D other)

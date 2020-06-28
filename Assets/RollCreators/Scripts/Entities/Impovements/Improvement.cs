@@ -16,7 +16,7 @@ public class Improvement : MonoBehaviour
             game.ApplyImprovement(this, other.transform.position);
             GameUI ui = FindObjectOfType<GameUI>();
             ui.ShowBonus(this);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

@@ -6,7 +6,7 @@ public class Freezing : MonoBehaviour
 {
     void Start()
     {
-        Destroy(this, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        Destroy(gameObject, GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
